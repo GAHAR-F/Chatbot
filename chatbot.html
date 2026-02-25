@@ -23,9 +23,8 @@
     }
 
     function sendmessage(){
-      if (inputText.trim() === '') return; // Don't send empty messages
-      
-      // Add user message
+      if (inputText.trim() === '') return; 
+
       const newChatMessages = [
         ...chatMessages,
         {
@@ -36,10 +35,8 @@
       ];
       setChatMessages(newChatMessages);
 
-      // Get robot response
       const response = Chatbot.getResponse(inputText);
-      
-      // Add robot response
+    
       setChatMessages([
         ...newChatMessages,
         {
@@ -51,6 +48,16 @@
 
       setInputText('');
     }
+
+        // Handle Enter key press
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendmessage();
+      }
+    }
+
+    // In the input element, add:
+    
     
     return (
       <div className='input-container'>
@@ -61,6 +68,7 @@
           size='40'
           onChange={changeMessage}
           value={inputText}
+          onKeyPress={handleKeyPress}
         />           
         <button onClick={sendmessage} className='send-button'>Send</button>
       </div>
