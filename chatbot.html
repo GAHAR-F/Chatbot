@@ -87,9 +87,16 @@
     );    
   }
 
-  function ChatMessages({chatMessages}){     
+  function ChatMessages({chatMessages}){ 
+    const chatMessageref = React.useRef(null);
+    React.useEffect(() => {
+      const containerElm = chatMessageref.current;
+      if(containerElm){
+        containerElm.scrollTop=containerElm.scrollHeight;
+      }
+    })    
     return(
-      <>
+      <div className='ChatMessages-container'ref={chatMessageref}>
         {chatMessages.map((chatMessage) => {
           return(
             <ChatMessage 
@@ -99,7 +106,7 @@
             />
           );
         })}
-      </>
+      </div>
     );
   }
   
@@ -135,12 +142,13 @@
     
     return(
       <div className="app-container">
+        
+        <ChatMessages 
+          chatMessages={chatMessages}
+        />
         <ChatBot
           chatMessages={chatMessages}
           setChatMessages={setChatMessages}
-        />
-        <ChatMessages 
-          chatMessages={chatMessages}
         />
       </div>
     );       

@@ -5,7 +5,8 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 body{
-    margin-top:25px;
+    margin-top:0px;
+    margin-bottom:0px;
     background-color: antiquewhite;
     align-items: center;
     justify-content: center;
@@ -13,6 +14,7 @@ body{
 }
 .input-container{
     display: flex;
+    margin-bottom: 60px;
 }
 
 .input-text{
@@ -58,11 +60,18 @@ body{
     max-width: 300px;
 }
 
-
+.ChatMessages-container{
+    flex-grow: 1;
+    margin-top: 20px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
 
 .app-container{
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-
-} */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+} 
